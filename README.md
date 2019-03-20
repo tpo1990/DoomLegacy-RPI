@@ -4,7 +4,7 @@ RPI script and RetroPie scriptmodule of Doom Legacy source port
 **Doom Legacy source port 1.47.2 for Raspberry Pi**
 
 Doom Legacy which is a Doom source port can now be built and run on our Raspberry Pi. The port features 2 player Split-screen multiplayer. This port relies on SDL1 libs and is working in RetroPie. Note: This is not final version.
-![doomlegacy3.png](https://raw.githubusercontent.com/tpo1990/DoomLegacy-RPI/master/doomlegacy3.png)
+![doomlegacy3.png](https://github.com/tpo1990/DoomLegacy-RPI/blob/master/screenshots/doomlegacy3.png)
 
 The game is fully playable. No bugs has been found yet.
 The scriptmodule provides an automatic installation and uninstallation for compiling and building on Raspberry Pi with RetroPie-Setup.
