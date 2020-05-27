@@ -17,15 +17,15 @@ rp_module_section="exp"
 rp_module_flags=""
 
 function depends_doomlegacy() {
-    getDepends cmake libsdl1.2-dev libsdl-net1.2-dev libsdl-sound1.2-dev libsdl-mixer1.2-dev libsdl-image1.2-dev timidity freepats
+    getDepends cmake libsdl1.2-dev libsdl-net1.2-dev libsdl-sound1.2-dev libsdl-mixer1.2-dev libsdl-image1.2-dev fluidsynth
 }
 
 function sources_doomlegacy() {
-    wget -O- -q https://netcologne.dl.sourceforge.net/project/doomlegacy/1.47.2/doomlegacy_1.47.2_source.tar.bz2 | tar -xvj --strip-components=1
+    wget -O- -q https://liquidtelecom.dl.sourceforge.net/project/doomlegacy/1.48.4/doomlegacy_1.48.4_source.tar.bz2 | tar -xvj --strip-components=1
 }
 
 function build_doomlegacy() {
-    make
+    make OS=LINUX SMIF=SDL HAVE_MIXER=1
 }
 
 function install_doomlegacy() {
@@ -34,9 +34,9 @@ function install_doomlegacy() {
 
 function game_data_doomlegacy() {
     if [[ ! -f "$romdir/ports/doom/legacy.wad" ]]; then
-        downloadAndExtract "https://netix.dl.sourceforge.net/project/doomlegacy/1.47.2/doomlegacy_1.47.2_common.zip" "$romdir/ports/doom/"
-        mv "$romdir/ports/doom/doomlegacy_1.47.2/legacy.wad" "$romdir/ports/doom/"
-        rm -r "$romdir/ports/doom/doomlegacy_1.47.2"
+        downloadAndExtract "https://iweb.dl.sourceforge.net/project/doomlegacy/1.48.4/doomlegacy_1.48.4_common.zip" "$romdir/ports/doom/"
+        mv "$romdir/ports/doom/doomlegacy_1.48.4/legacy.wad" "$romdir/ports/doom/"
+        rm -r "$romdir/ports/doom/doomlegacy_1.48.4"
         chown -R $user:$user "$romdir/ports/doom"
     fi
     
@@ -74,4 +74,8 @@ function configure_doomlegacy() {
     moveConfigDir "$md_inst/bin/wads" "$romdir/ports/doom"
 
     [[ "$md_mode" == "install" ]] && game_data_doomlegacy
+}
+
+function remove_doomlegacy() {
+    rm "$romdir/ports/doom/legacy.wad"
 }
